@@ -12,4 +12,6 @@
 @property (nonatomic, strong) NSDate* startDate;
 @property (nonatomic, strong) NSDate* endDate;
 @property (nonatomic, strong) NSString* name;
+@property (nonatomic, assign) BOOL exclusive;
+@property (nonatomic, assign, readonly) BOOL opened;
 @end
