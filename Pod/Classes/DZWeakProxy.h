@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+/*
+ * the weak proxy for any object, if you send a SEL to it, it will transform the SEL to target
+ */
+
 @interface DZWeakProxy : NSObject
 /**
  The proxy target.
