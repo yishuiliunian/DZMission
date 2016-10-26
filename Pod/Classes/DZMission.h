@@ -12,5 +12,6 @@
 #import "DZMissionTask.h"
 #import "DZMissionManager.h"
 #import "DZMissionHandler.h"
+#import "NSObject+DZMissionPerform.h"
 
 #endif /* DZMission_h */

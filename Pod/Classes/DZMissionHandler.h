@@ -10,6 +10,5 @@
 
 @class DZMissionTask;
 @protocol DZMissionHandler <NSObject>
-- (BOOL) canHandleMission:(DZMissionTask*)mission;
-- (void) handleMission:(DZMissionTask*)mission;
+- (void) handleMission:(DZMissionTask*)mission willComplete:(BOOL*)complete;
 @end

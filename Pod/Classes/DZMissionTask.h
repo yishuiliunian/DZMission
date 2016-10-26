@@ -13,4 +13,6 @@
 @property (nonatomic, strong) NSDate* endDate;
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, assign) int triggleCount;
+@property (nonatomic, assign) BOOL exclusive;
+@property (nonatomic, assign, readonly) BOOL opened;
 @end
