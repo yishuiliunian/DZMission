@@ -72,7 +72,6 @@
             continue;
         }
         [willGoonMissions addObject:task];
-        task.triggleCount++;
     }
     
     fileCache.lastCachedObject = willGoonMissions;
