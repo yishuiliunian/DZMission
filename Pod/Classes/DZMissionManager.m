@@ -45,6 +45,7 @@
             continue;
         }
         [willGoonMissions addObject:task];
+        task.triggleCount++;
     }
     
     fileCache.lastCachedObject = willGoonMissions;
@@ -60,6 +61,7 @@
     DZFileCache* fileCache = [self fileCache];
     NSMutableArray* array = [NSMutableArray arrayWithArray:fileCache.lastCachedObject];
     [array addObject:task];
+    fileCache.lastCachedObject = array;
 }
 
 - (void) registerHandler:(id<DZMissionHandler>)handler
