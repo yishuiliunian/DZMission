@@ -63,11 +63,13 @@
     NSDate* date = [NSDate date];
     NSMutableArray* willGoonMissions = [NSMutableArray new];
     for (DZMissionTask* task  in missions) {
+        //check task is opened ?
         if (!task.opened) {
             continue;
         }
+        //handle mission maybe complete the task
         [self handleMission:task];
-        
+        //check is the task opened again , if not it will be removed
         if (!task.opened) {
             continue;
         }
@@ -77,6 +79,7 @@
     
     fileCache.lastCachedObject = willGoonMissions;
     NSError* error;
+    //flush the file
     if(![fileCache flush:&error])
     {
         DDLogError(@"写入任务缓存 %@ error %@", fileCache.filePath ,error);
