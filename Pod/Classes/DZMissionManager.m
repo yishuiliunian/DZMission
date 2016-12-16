@@ -48,13 +48,18 @@
     for (NSObject<DZMissionHandler>* handler in _proxyCache) {
         if ([handler respondsToSelector:@selector(handleMission:willComplete:)]) {
             BOOL willStop = NO;
-            [handler handleMission:task willComplete:&willStop];
+            if([handler handleMission:task willComplete:&willStop]) {
+                NSMutableArray* dateSerial = [NSMutableArray arrayWithArray:task.triggleDates];
+                [dateSerial addObject:[NSDate date]];
+                task.triggleDates = dateSerial;
+            }
             if (willStop) {
                 task.endDate = [NSDate dateWithTimeInterval:-100 sinceDate:task.startDate];
             }
         }
     }
 }
+
 - (void) tryTriggleMission
 {
     DZFileCache* fileCache = [self fileCache];
@@ -65,6 +70,11 @@
     for (DZMissionTask* task  in missions) {
         //check task is opened ?
         if (!task.opened) {
+            for(NSObject <DZMissionHandler>* handler in _proxyCache) {
+                if ([handler respondsToSelector:@selector(handleMissionTriggleCompletion:)]) {
+                    [handler handleMissionTriggleCompletion:task];
+                }
+            }
             continue;
         }
         //handle mission maybe complete the task

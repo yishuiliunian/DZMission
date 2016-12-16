@@ -15,5 +15,7 @@
  */
 @protocol DZMissionHandler <NSObject>
 
-- (void) handleMission:(DZMissionTask*)mission willComplete:(BOOL*)complete;
+- (BOOL) handleMission:(DZMissionTask*)mission willComplete:(BOOL*)complete;
+
+- (void) handleMissionTriggleCompletion:(DZMissionTask *)mission;
 @end
