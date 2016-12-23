@@ -130,6 +130,11 @@
     BOOL changed = NO;
     for (DZMissionTask* m  in oldArray) {
         if ( [m.name isEqualToString:key]) {
+            for(NSObject <DZMissionHandler>* handler in _proxyCache) {
+                if ([handler respondsToSelector:@selector(handleMissionTriggleCompletion:)]) {
+                    [handler handleMissionTriggleCompletion:m];
+                }
+            }
             [array removeObject:m];
             changed = YES;
         }
